@@ -37,7 +37,7 @@ This is a Streamlit app designed to summarize YouTube videos. By entering a YouT
 
 1. **Run the Streamlit App**
     ```bash
-    streamlit run main.py
+    streamlit run run.py
     ```
 
 2. **Open the App**
