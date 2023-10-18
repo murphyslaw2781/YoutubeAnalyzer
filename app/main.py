@@ -21,9 +21,13 @@ def main():
         st.header("API Key")
         temp_key = st.text_input("Enter OpenAI API Key:", type="password")
         if st.button("Save Key"):
-            st.session_state.api_key = temp_key
-            os.environ["OPENAI_API_KEY"] = temp_key  # Assuming your app uses the key as an environment variable
-            st.success("API Key has been saved.")
+            if not temp_key:
+                st.error("API Key is required.")
+            else:
+                # You may also validate the API key format or test it with a simple API call
+                st.session_state.api_key = temp_key
+                os.environ["OPENAI_API_KEY"] = temp_key
+                st.success("API Key has been saved.")
 
     # Create columns for inline layout
     col1, col2, col3 = st.columns([1, 2, 3])
@@ -48,12 +52,15 @@ def main():
             st.markdown(f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{video_id}" frameborder="0"></iframe>', unsafe_allow_html=True)
 
         if st.button("Summarize Video"):
-            try:
-                with st.spinner("Summarizing..."):
-                    st.session_state.summaries_json = get_summary(st.session_state.result)
-
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+            # Check if API key is set before proceeding with summarization
+            if not st.session_state.get('api_key'):
+                st.error("Please enter your OpenAI API Key in the sidebar to proceed with summarization.")
+            else:
+                try:
+                    with st.spinner("Summarizing..."):
+                        st.session_state.summaries_json = get_summary(st.session_state.result)
+                except Exception as e:
+                    st.error(f"An error occurred: {e}")
 
     if st.session_state.summaries_json:
         with col3:
