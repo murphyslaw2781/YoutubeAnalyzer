@@ -1,0 +1,9 @@
+streamlit
+pytube
+openai
+langchain
+transformers
+youtube-transcript-api
+tiktoken
+scikit-learn
+python-dotenv
