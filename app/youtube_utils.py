@@ -12,6 +12,7 @@ from langchain.chains.summarize import load_summarize_chain
 import numpy as np
 from sklearn.cluster import KMeans
 from dotenv import load_dotenv
+from pytube import YouTube
 
 # load_dotenv()
 
@@ -74,6 +75,7 @@ def fetch_transcript(video_id):
         return caption_track.generate_srt_captions()
     else:
         return None
+
 def format_text(text):
         return text.replace('\n', ' ').replace('\r', '').replace('  ', ' ').strip()
 def split_video_document(result):
