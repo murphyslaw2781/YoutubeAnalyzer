@@ -1,5 +1,4 @@
 from urllib.parse import urlparse, parse_qs
-from pytube import YouTube
 from langchain.schema import Document
 from langchain.document_loaders import YoutubeLoader
 from langchain.text_splitter import TokenTextSplitter
