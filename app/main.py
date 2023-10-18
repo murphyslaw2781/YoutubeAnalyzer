@@ -2,7 +2,7 @@
 import json
 import os
 import streamlit as st
-from youtube_utils import extract_video_id,fetch_video_details, fetch_transcript,get_summary
+from app.youtube_utils import extract_video_id,fetch_video_details, fetch_transcript,get_summary
 
 def main():
     """The main function where the Streamlit app is initialized."""
@@ -69,7 +69,8 @@ def main():
             with st.expander("Final Summary"):
                 st.write(st.session_state.summaries_json['final_summary'])
 
-st.set_page_config(layout="wide")
+
 
 if __name__ == "__main__":
+    
     main()
