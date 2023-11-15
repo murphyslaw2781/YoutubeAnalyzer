@@ -4,5 +4,6 @@ transformers
 youtube-transcript-api
 tiktoken
 scikit-learn
+spacy
 python-dotenv
 pytube
